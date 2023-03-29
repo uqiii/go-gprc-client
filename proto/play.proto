@@ -1,0 +1,32 @@
+syntax = "proto3";
+option go_package = "./play";
+
+service PlayService {
+    rpc GetPlayById (GetPlayByIdRequest) returns (GetPlayByIdResponse);
+    rpc GetAllPlays (GetAllPlaysRequest) returns (GetAllPlaysResponse);
+    rpc CreatePlay (CreatePlayRequest) returns (CreatePlayResponse);
+}
+
+message GetPlayByIdRequest {
+    string id = 1;
+}
+
+message GetPlayByIdResponse {
+    string id = 1;
+    string name = 2;
+}
+
+message GetAllPlaysRequest {}
+
+message GetAllPlaysResponse {
+    repeated GetPlayByIdResponse plays = 1; 
+}
+
+message CreatePlayRequest{
+    string name = 1;
+}
+
+message CreatePlayResponse{
+    string id = 1;
+    string name = 2;
+}
